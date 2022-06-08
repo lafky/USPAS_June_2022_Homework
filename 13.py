@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import random
 import cmath
 from scipy.optimize import curve_fit
+from scipy.fft import fft, fftfreq
 import math
 
 numE = 100                      #Number of Electrons
@@ -27,6 +28,10 @@ for t in range(len(time)):  #Calculates the E field at each unit of time
         eField[t] = eField[t] + cmath.exp( (-((time[t]-timej[y])**2)/(4*(sigmaT**2))) - 1j*omegaOne*(time[t]-timej[y]) )
 
 #Calculate the Fourier Transform
+efft = fft(eField)
+tf = fftfreq(len(eField),150)
 
 plt.plot(time,eField)
+#plt.plot(tf, efft)
+plt.grid()
 plt.show()
