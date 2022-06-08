@@ -3,19 +3,17 @@
 #HW1.3
 
 from cmath import nan, pi
-from os import times_result
 import numpy as np
 import matplotlib.pyplot as plt
-import random
 import cmath
-from scipy.optimize import curve_fit
-from scipy.fft import fft, fftfreq
 import math
+from scipy.fftpack import fft, rfft, fftfreq, rfftfreq
+
 
 numE = 100                      #Number of Electrons
 bunchLength = 100               #bunch Length, arbitrary time units
-time = np.arange(-75,75,1)      #Independent Axis, arbitrary time units
-eField = np.zeros(len(time))    #Dependent Axis, Calculated E Field at each point of time, not SI
+time = np.arange(-75,75,.1)      #Independent Axis, arbitrary time units
+eField = np.zeros(len(time),dtype=complex)    #Dependent Axis, Calculated E Field at each point of time, not SI
 #timej = (np.random.rand(numE)*bunchLength) #Generate a random distribution of times for temporal incoherence, between 0 and the bunchLength
 timej = (np.random.rand(numE)*bunchLength)-bunchLength*.5 #Generate a random distribution of times for temporal incoherence, corrected +/- half the bunch length
 #timej = np.zeros(numE)
@@ -26,12 +24,18 @@ omegaOne = 2*pi
 for t in range(len(time)):  #Calculates the E field at each unit of time
     for y in range(numE):
         eField[t] = eField[t] + cmath.exp( (-((time[t]-timej[y])**2)/(4*(sigmaT**2))) - 1j*omegaOne*(time[t]-timej[y]) )
-
+    #print(t, y, time[t], eField[t])
 #Calculate the Fourier Transform
-efft = fft(eField)
-tf = fftfreq(len(eField),150)
+efft = fft(eField)[:len(eField)//2]
+tf = fftfreq(len(eField),150)[:len(eField)//2]
 
-plt.plot(time,eField)
+fig1, axs = plt.subplots(1,2,figsize=(16,9))
+fig1.suptitle('')
+axs[0].plot(time,eField)
+axs[0].set_title('E(t) vs t')
+axs[1].plot(tf,efft)
+axs[1].set_title('E(t) vs s')
+#plt.plot(time,eField)
 #plt.plot(tf, efft)
 plt.grid()
 plt.show()
