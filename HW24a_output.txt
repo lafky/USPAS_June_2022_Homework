@@ -1,0 +1,8 @@
+e- Energy: 1.4 GeV
+Lorentz Factor: 2741
+For undulator period length 5.0 (cm) and gap 1.5 (cm)
+B0 = 0.861 T and K = 4.0198
+λ1 = 3.0218e-08 (m) ω1 = 1.6830610046756836e+18
+E1 = 41.0 eV
+λ3 = 1.119e-09 (m) ω3 = 1.6830610046756836e+18
+E3 = 1107.5 eV
