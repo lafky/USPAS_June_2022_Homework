@@ -19,7 +19,7 @@ gamma = (Ebeam*1000+m0)/m0  #Lorentz factor
 #ONLY CHANGE THESE
 #gap < lam_u
 lam_u = .05                 #undulator period length, m
-gap = .015                  #gap, m
+gap = .049                  #gap, m
 
 #Calculated undulator parameters
 B0 = 3.44*math.exp(-(gap/lam_u)*(5.08-1.54*(gap/lam_u)))    #Field strength, T
@@ -31,7 +31,7 @@ omg_1 = (2*pi*c)/lam_1                                      #fundamental frequen
 E_1 = omg_1*h_bar                                           #fundamental energy, eV
 
 #Calculated third harmonic parameters
-gam_r = gamma*3                                             #resonance gamma of the third harmonic, unitless
+gam_r = gamma                                               #resonance gamma of the third harmonic, unitless
 lam_3 = ((1+k**2/2)/(2*gam_r**2))*(lam_u/3)                 #3rd harmonic wavelength, m
 omg_3 = omg_1 = (2*pi*c)/lam_3                              #3rd harmonic frequency, s^-1
 E_3 = omg_3*h_bar                                           #3rd harmonic energy, eV
