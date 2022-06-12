@@ -18,12 +18,12 @@ gamma = (Ebeam*1000+m0)/m0  #Lorentz factor
 #free parameters
 #ONLY CHANGE THESE
 #gap < lam_u
-lam_u = .1                  #undulator period length, m
+lam_u = .05                 #undulator period length, m
 gap = .015                  #gap, m
 
 #Calculated undulator parameters
 B0 = 3.44*math.exp(-(gap/lam_u)*(5.08-1.54*(gap/lam_u)))    #Field strength, T
-k = .934*lam_u*B0                                           #deflection parameter, m*T
+k = 93.4*lam_u*B0                                           #deflection parameter, m*T
 
 #Calculated fundamental parameters
 lam_1 = (lam_u/(2*gamma*gamma))*(1+k*k/2)                   #fundamental wave length, m
