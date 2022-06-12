@@ -39,7 +39,7 @@ E_3 = omg_3*h_bar                                           #3rd harmonic energy
 print('e- Energy: ' + str(Ebeam) + ' GeV')
 print('Lorentz Factor: ' + str(round(gamma)))
 print('For undulator period length ' + str(lam_u*100) + ' (cm) and gap ' + str(round(gap*100,3)) + ' (cm) ')
-print('B0 = ' + str(round(B0,3)) + ' T and K = ' + str(round(k,4)) + ' (T * cm)')
+print('B0 = ' + str(round(B0,3)) + ' T and K = ' + str(round(k,4)))
 print('λ1 = ' + str(round(lam_1,12)) + ' (m)' + ' ω1 = ' + str(round(omg_1,12)))
 print('E1 = ' + str(round(E_1,1)) + ' eV')
 print('λ3 = ' + str(round(lam_3,12)) + ' (m)' + ' ω3 = ' + str(round(omg_3,12)))
