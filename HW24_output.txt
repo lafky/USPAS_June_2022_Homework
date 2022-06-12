@@ -1,0 +1,21 @@
+e- Energy: 1.4 GeV
+Lorentz Factor: 2741
+For undulator period length 5.0 (cm), gap 1.5 (cm), Nu = 100
+B0 = 8.608E-01 T and K = 4.020E+00
+FUNDAMENTAL:
+λ1 = 3.022E-08 (m) ω1 = 1.870E+17 (s^-1)
+E1 = 41.0 eV.  RMS Angular Divergence = 5.497E-05, flux = 1.309E+18 photons/(s*mrad*.1% BW)
+THIRD HARMONIC:
+λ3 = 1.007E-08 (m) ω3 = 1.870E+17 (s^-1)
+E3 = 123.1 eV.  RMS Angular Divergence = 3.174E-05, flux = 8.117E+17 photons/(s*mrad*.1% BW)
+
+e- Energy: 1.4 GeV
+Lorentz Factor: 2741
+For undulator period length 5.0 (cm), gap 4.9 (cm), Nu = 100
+B0 = 1.039E-01 T and K = 4.854E-01
+FUNDAMENTAL:
+λ1 = 3.720E-09 (m) ω1 = 1.519E+18 (s^-1)
+E1 = 333.2 eV.  RMS Angular Divergence = 1.929E-05, flux = 2.724E+17 photons/(s*mrad*.1% BW)
+THIRD HARMONIC:
+λ3 = 1.240E-09 (m) ω3 = 1.519E+18 (s^-1)
+E3 = 999.5 eV.  RMS Angular Divergence = 1.114E-05, flux = 1.750E+15 photons/(s*mrad*.1% BW)
