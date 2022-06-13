@@ -9,7 +9,7 @@ from scipy import special
 #constants
 c = 299792458               #c, m/s
 h_bar = 6.58E-16            #Planck constant, ev*s
-Ebeam = 1.4                 #Energy of e-beam, GeV
+Ebeam = 1.5                 #Energy of e-beam, GeV
 m0 = .511                   #Mass of e-, MeV
 m0_gev = m0/1000            #Mass of e-, GeV
 curr = .4                   #beam current, Amps
@@ -20,7 +20,7 @@ L = 5                       #Undulator length, m
 #ONLY CHANGE THESE
 #gap < lam_u
 lam_u = .05                 #undulator period length, m
-gap = .015                  #gap, m
+gap = .045                  #gap, m
 
 #Calculated undulator parameters
 B0 = 3.44*math.exp(-(gap/lam_u)*(5.08-1.54*(gap/lam_u)))    #Field strength, T
