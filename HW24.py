@@ -20,7 +20,7 @@ L = 5                       #Undulator length, m
 #ONLY CHANGE THESE
 #gap < lam_u
 lam_u = .05                 #undulator period length, m
-gap = .045                  #gap, m
+gap = .015                  #gap, m
 
 #Calculated undulator parameters
 B0 = 3.44*math.exp(-(gap/lam_u)*(5.08-1.54*(gap/lam_u)))    #Field strength, T
@@ -35,7 +35,7 @@ E_1 = omg_1*h_bar                                           #fundamental energy,
 sig_1 = (lam_1/(2*L))**.5                                   #RMS Angular Divergence
 x_1 = (1*k**2)/(4+2*(k**2))                                 #input for bessell function
 jj_1 = ((-1)**0)*(special.jv(0,(x_1))-special.jv(1,(x_1)))  #bessell function
-flux_1 = (1.74E14)*(Nu**2)*((gamma*m0_gev)**2)*curr*(1**2)*(k**2)*(jj_1)**2/(1+(k**2)/2)    #flux, photons/(s*mrad*.1% BW)
+flux_1 = (1.74E14)*(Nu**2)*((gamma*m0_gev)**2)*curr*(1**2)*(k**2)*(jj_1)**2/((1+(k**2)/2)**2)    #flux, photons/(s*mrad*.1% BW)
 
 #Calculated third harmonic parameters
 gam_r = gamma                                               #resonance gamma of the third harmonic, unitless
@@ -45,7 +45,7 @@ E_3 = omg_3*h_bar                                           #3rd harmonic energy
 sig_3 = (lam_3/(2*L))**.5                                   #RMS Angular Divergence
 x_3 = (1*k**2)/(4+2*(k**2))                                 #input for bessell function
 jj_3 = ((-1)**1)*(special.jv(1,(x_3))-special.jv(2,(x_3)))  #bessell function
-flux_3 = (1.74E14)*(Nu**2)*((gamma*m0_gev)**2)*curr*(3**2)*(k**2)*(jj_3)**2/(1+(k**2)/2)    #flux, photons/(s*mrad*.1% BW)
+flux_3 = (1.74E14)*(Nu**2)*((gamma*m0_gev)**2)*curr*(3**2)*(k**2)*(jj_3)**2/((1+(k**2)/2)**2)    #flux, photons/(s*mrad*.1% BW)
 
 print('e- Energy: ' + str(Ebeam) + ' GeV')
 print('Lorentz Factor: ' + str(round(gamma)))

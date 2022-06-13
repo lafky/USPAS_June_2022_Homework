@@ -1,13 +1,13 @@
-e- Energy: 1.5 GeV
+﻿e- Energy: 1.5 GeV
 Lorentz Factor: 2936
 For undulator period length 5.0 (cm), gap 1.5 (cm), Nu = 100
 B0 = 8.608E-01 T and K = 4.020E+00
 FUNDAMENTAL:
 λ1 = 2.632E-08 (m) ω1 = 2.147E+17 (s^-1)
-E1 = 47.1 eV.  RMS Angular Divergence = 5.131E-05, flux = 1.503E+18 photons/(s*mrad*.1% BW)
+E1 = 47.1 eV.  RMS Angular Divergence = 5.131E-05, flux = 1.655E+17 photons/(s*mrad*.1% BW)
 THIRD HARMONIC:
 λ3 = 8.775E-09 (m) ω3 = 2.147E+17 (s^-1)
-E3 = 141.3 eV.  RMS Angular Divergence = 2.962E-05, flux = 9.317E+17 photons/(s*mrad*.1% BW)
+E3 = 141.3 eV.  RMS Angular Divergence = 2.962E-05, flux = 1.026E+17 photons/(s*mrad*.1% BW)
 
 e- Energy: 1.5 GeV
 Lorentz Factor: 2936
@@ -15,7 +15,7 @@ For undulator period length 5.0 (cm), gap 4.5 (cm), Nu = 100
 B0 = 1.238E-01 T and K = 5.781E-01
 FUNDAMENTAL:
 λ1 = 3.384E-09 (m) ω1 = 1.670E+18 (s^-1)
-E1 = 366.3 eV.  RMS Angular Divergence = 1.840E-05, flux = 4.161E+17 photons/(s*mrad*.1% BW)
+E1 = 366.3 eV.  RMS Angular Divergence = 1.840E-05, flux = 3.565E+17 photons/(s*mrad*.1% BW)
 THIRD HARMONIC:
 λ3 = 1.128E-09 (m) ω3 = 1.670E+18 (s^-1)
-E3 = 1098.8 eV.  RMS Angular Divergence = 1.062E-05, flux = 4.985E+15 photons/(s*mrad*.1% BW)
+E3 = 1098.8 eV.  RMS Angular Divergence = 1.062E-05, flux = 4.271E+15 photons/(s*mrad*.1% BW)
