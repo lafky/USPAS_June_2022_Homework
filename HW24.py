@@ -1,6 +1,6 @@
 #Mike Lafky
 #USPAS June 2022
-#HW2.4a
+#HW2.4
 
 from cmath import pi
 import math
