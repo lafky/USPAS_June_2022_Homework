@@ -30,12 +30,14 @@ lam_u = .03                     #period length, m
 sig_g = 0.0001                  #energy spread 
 lambda_1 = 1.5E-10              #fundamental wavelength, m
 k = 3.5                         #FEL focusing parameter, unitless
-#pBeam = gamma*mo_kg*(c**2)*curr #beam power, W
-pBeam  = eBeam*(curr/1000)       #beam power in book units
+#pBeam = eBeam_j*(curr/e)              #beam power, W
+pBeam = gamma*mo_kg*(c**2)*(curr/e)    #beam power, W
+#pBeam  = eBeam*(curr/(e*1000))        #beam power in book units
 
 #parameters for plotting
 beta = np.linspace(1,20,1000)
 p = np.zeros(len(beta))
+LG = np.zeros(len(beta))
 
 #loop to calculate P at each z
 for x in range(len(beta)):   
@@ -62,13 +64,23 @@ for x in range(len(beta)):
     big_lamb_3 = a[15]*(sig_d**a[16])*(sig_e**a[17])*(sig_g**a[18])
     big_lamb = big_lamb_1 + big_lamb_2 + big_lamb_3 #parameter that determines power growth 
     
-    LG0 = lam_u/(4*pi*sqrt(3)*ro)                   #gain length fundamental
-    LG  = LG0*(1+big_lamb)
+    LG0 = lam_u/(4*pi*sqrt(3)*ro)                   #1-D gain length
+    LG[x]  = LG0*(1+big_lamb)
     p[x] = (1.6/((1+big_lamb)**2))*ro*pBeam         #Saturation Power
 
 #print(big_lamb, LG0, LG)
+print(LG0, pBeam)
 #print(beta,p)
-plt.plot(beta,p)
-plt.xlabel('Average Beta (m)')
-plt.ylabel('Power (TW) (GeV*kA) ')
+#plt.plot(beta,p)
+#plt.xlabel('Average Beta (m)')
+#plt.ylabel('Saturation Power (W) ')
+
+fig, ax1 = plt.subplots()
+ax2 = ax1.twinx()
+ax1.plot(beta, p, 'r-')
+ax2.plot(beta, LG, 'b-')
+ax1.set_xlabel('Avg. Beta (m)')
+ax1.set_ylabel('Power (w)', color='r')
+ax2.set_ylabel('LG (m)', color='b')
+
 plt.show()
