@@ -17,10 +17,10 @@ mo_kg = 9.1093837014E-31    #Mass of 2-, kg
 e = 1.6E-19                 #electron charge, C
 alpha = 1/137               #fine structure constant, unitless
 IA = 17045                  #Alfven constant, A
-a = np.array([.45, .57, .55, 1.6, 3, 2, .35, 2.9, 2.4, 51, .95, 3, 5.4, .7, 1.9, 1140, 2.2, 2.9, 3.2])
+a = np.array([.45, .57, .55, 1.6, 3, 2, .35, 2.9, 2.4, 51, .95, 3, 5.4, .7, 1.9, 1140, 2.2, 2.9, 3.2])  #fitting parameter array
 
 #Fel parameters
-eBeam = 13.6                   #Energy of e-beam, GeV
+eBeam = 13.6                    #Energy of e-beam, GeV
 eBeam_j = eBeam*1.60218E-10     #Energy of e-beam, J
 gamma = (eBeam*1000+m0)/m0      #Lorentz factor
 emit_norm =  4E-7               #normalized emittance, m rad
@@ -35,7 +35,7 @@ pBeam = gamma*mo_kg*(c**2)*(curr/e)    #beam power, W
 #pBeam  = eBeam*(curr/(e*1000))        #beam power in book units
 
 #parameters for plotting
-beta = np.linspace(1,20,1000)
+beta = np.linspace(1,25,1000)
 p = np.zeros(len(beta))
 LG = np.zeros(len(beta))
 
@@ -45,7 +45,7 @@ for x in range(len(beta)):
     #Power Calculations
     sig_x = sqrt(beta[x]*emit)              #beam size, m
     sig_xp = sqrt(emit/sig_x)               #beam divergence, rad    
-    kb = 1/beta[x]                             #average focusing parameter, 1/m
+    kb = 1/beta[x]                          #average focusing parameter, 1/m
 
     #Pierce parameter Calculations
     x_1 = (1*k**2)/(4+2*(k**2))                                 #input for bessell function
@@ -64,17 +64,15 @@ for x in range(len(beta)):
     big_lamb_3 = a[15]*(sig_d**a[16])*(sig_e**a[17])*(sig_g**a[18])
     big_lamb = big_lamb_1 + big_lamb_2 + big_lamb_3 #parameter that determines power growth 
     
-    LG0 = lam_u/(4*pi*sqrt(3)*ro)                   #1-D gain length
-    LG[x]  = LG0*(1+big_lamb)
-    p[x] = (1.6/((1+big_lamb)**2))*ro*pBeam         #Saturation Power
+    LG0 = lam_u/(4*pi*sqrt(3)*ro)                   #1-D gain length, m
+    LG[x]  = LG0*(1+big_lamb)                       #gain length, m
+    #p[x]=1.6*((LG0/LG[x])**2)*ro*pBeam             #Saturation Power, alternate calc
+    p[x] = (1.6/((1+big_lamb)**2))*ro*pBeam         #Saturation Power, units depend on input power units
 
-#print(big_lamb, LG0, LG)
-print(LG0, pBeam)
-#print(beta,p)
-#plt.plot(beta,p)
-#plt.xlabel('Average Beta (m)')
-#plt.ylabel('Saturation Power (W) ')
 
+print(ro, LG0, pBeam)
+
+#plot
 fig, ax1 = plt.subplots()
 ax2 = ax1.twinx()
 ax1.plot(beta, p, 'r-')
@@ -82,5 +80,4 @@ ax2.plot(beta, LG, 'b-')
 ax1.set_xlabel('Avg. Beta (m)')
 ax1.set_ylabel('Power (w)', color='r')
 ax2.set_ylabel('LG (m)', color='b')
-
 plt.show()
