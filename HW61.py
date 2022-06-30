@@ -26,7 +26,7 @@ mu = (-1+compl*sqrt(3))/2
 #A = .1                      #Arbitrarily chosen 6.12 coefficient
 #B = 1                       #Arbitrarily chosen for z*mu*i in 6.12 exponential
 
-k = 3.7                     #LCLS Focusing parameter, unitless
+#k1 = 3.7                     #LCLS Focusing parameter, unitless
 z = 70                       #LCLS undulator length, m
 lambda_u = .03              #LCLS undulator wavelength, m
 ku = 2*pi/lambda_u          #LCLS Ku
@@ -35,23 +35,36 @@ B = 2*rho*ku*z*mu*compl     #Exponent
 #print(mu, compl, B)
 #print(6.234E-4*ku*70)
 
+k = np.logspace(.1,10,100)  #Array of K values
 h = np.array([ 3, 5, 7, 9])  #Array of harmonics
-p_h = np.zeros(len(h))      #Power calc array
+p_h = np.zeros((len(h),len(k)))      #Power calc array
 
-x_1 = (1*(k**2))/(4+2*(k**2))    #input for fundamental bessel function function
-jj_1 = ((-1)**1)*(special.jv(0,(x_1))-special.jv(1,(x_1)))  #fundamental bessel function function
-
-x_h = (h*(k**2))/(4+2*(k**2))                                           #input for harmonic bessell function function
-jj_h = ((-1)**h)*(special.jv((h-1)/2,(x_h))-special.jv((h+1)/2,(x_h)))  #bessell function function at each harmonic
+#print(p_h)
+#print(k)
 
 for x in range(len(h)):
-    p_h[x] = ((h[x]*(jj_h[x]**2)/(jj_1)**2))**(1/3)
+    for y in range(len(k)):
+        
+        x_1 = (1*(k[y]**2))/(4+2*(k[y]**2))    #input for fundamental bessel function function
+        jj_1 = ((-1)**1)*(special.jv(0,(x_1))-special.jv(1,(x_1)))  #fundamental bessel function function
+        
+        x_h = (h[x]*(k[y]**2))/(4+2*(k[y]**2))                                           #input for harmonic bessell function function
+        jj_h = ((-1)**h[x])*(special.jv((h[x]-1)/2,(x_h))-special.jv((h[x]+1)/2,(x_h)))  #bessell function function at each harmonic
 
-print(jj_1**2,jj_h[0]**2, p_h)
+        p_h[x][y] = ((h[x]*(jj_h**2)/(jj_1)**2))**(1/3)
+
+#print(jj_1**2,jj_h[0]**2, p_h)
 #Plot
+
 fig, ax1 = plt.subplots()
-ax1.bar(h, p_h)
-ax1.set_yscale('log')
-ax1.set_xlabel('harmonic #)')
-ax1.set_ylabel('mu_h = (h*[jj]_h^3/[jj])')
+ax1.plot(k, p_h[0], label = '3rd')
+ax1.plot(k, p_h[1], label = '5th')
+ax1.plot(k, p_h[2], label = '7th')
+ax1.plot(k, p_h[3], label = '9th')
+ax1.legend()
+ax1.set_yscale('linear')
+ax1.set_xscale('linear')
+ax1.set_xlim([0,10])
+ax1.set_xlabel('k')
+ax1.set_ylabel('mu_h')
 plt.show()
