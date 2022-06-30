@@ -52,10 +52,12 @@ for x in range(len(h)):
 #print(rho)
 fig, ax1 = plt.subplots()
 ax1.plot(k, rho[0], 'b', label = '3rd')
+ax1.set_title('Homework 6.1 a ii')
 ax1.legend()
 ax1.set_yscale('linear')
 ax1.set_xscale('linear')
 ax1.set_xlim([0,10])
 ax1.set_xlabel('k')
 ax1.set_ylabel('Ratio of rho(3) to rho(1)')
+
 plt.show()
